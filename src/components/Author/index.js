@@ -1,5 +1,4 @@
 import React from 'react';
-import FacebookProvider, { Share, CommentsCount } from 'react-facebook';
 /**
  *render Author
  */
