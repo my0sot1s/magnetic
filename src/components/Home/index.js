@@ -17,9 +17,9 @@ export default class Home extends React.Component {
     return (
       <div className="work">
         <a href="javascript:;">
+          <img src={item.banner[0]} className="media" alt="" />
           <Link to={direct}>
-            <img src={item.banner[0]} className="media" alt="" />
-            <div className="caption">
+            <div className="caption" id={item._id}>
               <div className="work_title">
                 <h1>{item.titile}</h1>
                 <h3>{item.author}</h3>
@@ -31,6 +31,7 @@ export default class Home extends React.Component {
               </div>
             </div>
           </Link>
+          <div className="shower"></div>
         </a>
       </div>
     );

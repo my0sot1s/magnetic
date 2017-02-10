@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 /**
  *render Author
  */
@@ -55,13 +56,16 @@ export default class Author extends React.Component {
 
             <ul className="btn clearfix">
               <li>
-                <a href="#" className="previous" data-title="Previous"></a>
+                <a href="javascript:;" className="previous" data-title="Previous">
+                </a>
               </li>
               <li>
-                <a href="index.html" className="grid" data-title="Home"></a>
+                <a href="javascript:;" data-title="Home">
+                  <Link to="/home" className="grid"></Link>
+                </a>
               </li>
               <li>
-                <a href="#" className="next" data-title="Next"></a>
+                <a href="javascript:;" className="next" data-title="Next"></a>
               </li>
             </ul>
 

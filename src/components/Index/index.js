@@ -19,7 +19,7 @@ export default class Index extends Component {
       <div>
         <header>
           <div className="logo">
-            <a href="index.html"><img src="./../../public/img/logo.png" title="Magnetic" alt="Magnetic" /></a>
+            <a href="/"><img src="./../../public/img/logo.png" title="Magnetic" alt="Magnetic" /></a>
             <p className="subTitile">Story in the fact</p>
           </div>
           <div id="menu_icon"></div>
