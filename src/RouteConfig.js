@@ -23,7 +23,7 @@ export default class RouteConfig extends React.Component {
      */
     render() {
         return (
-            <Router history={hashHistory} >
+            <Router history={browserHistory} >
                 <Route path='/' component={Index}>
                     <Route path='/home' component={Home} />
                     /**this child of contact */
