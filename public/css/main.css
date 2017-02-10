@@ -158,6 +158,7 @@ h5, h6          { font-weight: bolder }
     header nav ul li a:hover,
     header nav ul li a.selected{
         color: #969595;
+        border-bottom: 1px solid #b297ed;
     }
 
     header .footer{
@@ -323,7 +324,7 @@ h5, h6          { font-weight: bolder }
     width: 100%;
     position: absolute;
     text-align: center;
-    top: 50%;
+    top: 45%;
     margin-top: -90px;
 }
 
@@ -335,7 +336,7 @@ h5, h6          { font-weight: bolder }
     z-index: 77;
     color: #454545;
     font-family: "raleway-regular", arial;
-    font-size: 16px;
+    font-size: 18px;
     letter-spacing: .5px;
     border-bottom: 1px solid #bfbbbb;
     border-top: 1px solid #bfbbbb;
@@ -368,7 +369,7 @@ h5, h6          { font-weight: bolder }
 }
 
 .work_nav .btn{
-    float: right;
+    float: left;
 }
 
 .work_nav ul{
@@ -653,3 +654,36 @@ h5, h6          { font-weight: bolder }
 
 
  /*custome*/
+.slogan_frame{
+    padding:5px;
+     -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.glogan{
+    text-align: center;
+    padding: 5px;
+}
+.beginStory{
+    font-style: italic;
+    font-size: medium;
+    text-align: center;
+}
+.dateCreate{
+    text-align: center;
+    color:brown;
+    margin-top: 10px;
+}
+.inforStory{
+    display: block;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top:85%;
+}
+header nav ul li a:hover{
+    border-bottom: 1px solid #97deed;
+}
+/*.media{
+    height:400px;
+}*/

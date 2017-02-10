@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('#myElement').addEventListener('click', () => {
+  document.querySelector('#menu_icon').addEventListener('click', () => {
     document.querySelectorAll('header nav ul').classList.toggle('show_menu');
     document.querySelector('#menu_icon').classList.toggle('close_menu');
     return false;

@@ -1,12 +1,15 @@
+const webpack = require('webpack');
+const path = require('path');
+
 var config = {
+    devtool: 'eval',
     entry: './main.js',
     output: {
-        path: './',
-        filename: 'index.js',
+        path: path.join(__dirname, 'public'),
+        filename: 'index.min.js',
+        publicPath: '/public/',
     },
-
     devServer: {
-        historyApiFallback: true,
         inline: true,
         port: 8088,
     },
@@ -23,6 +26,13 @@ var config = {
             },
         ],
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production'),
+            },
+        }),
+    ],
 };
 
 module.exports = config;

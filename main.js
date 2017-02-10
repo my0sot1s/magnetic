@@ -21,7 +21,7 @@ class App extends React.Component {
     }
 }
 const root = document.getElementById('root');
-
+// "start": "webpack-dev-server --hot --inline --color --progress --history-api-fallback",
 ReactDOM.render(
     <App />,
     root

@@ -1,1 +1,5 @@
 /node_modules
+/public/index.html
+/public/contact.html
+/public/inner.html
+/public/fakeDb
