@@ -119,14 +119,14 @@ export default class Author extends React.Component {
    *renderView
    */
   render() {
-    var id = this.props.params.id;
+    var id = Number(this.props.params.id) - 1;
     return (
       <section className="main clearfix">
         {this.renderClearFix.bind(this, this.props.prop[id])()}
         <section className="wrapper">
           <div className="content">
 
-            {this.renderContent.bind(this, this.props.stories[id - 1], this.props.prop[id - 1])()}
+            {this.renderContent.bind(this, this.props.stories[id], this.props.prop[id])()}
 
             {this.renderComment.bind(this)()}
           </div>
