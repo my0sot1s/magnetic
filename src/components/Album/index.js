@@ -9,9 +9,15 @@ class Album extends React.Component {
   constructor(props) {
     super(props);
   }
+  /**
+   *
+   */
   componentWillMount() {
     fetchAlbum(this.props.dispatch);
   }
+  /**
+   *render view 
+   */
   render() {
     const { images, dispatch } = this.props.album;
     console.log('image', images);

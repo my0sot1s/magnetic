@@ -437,7 +437,7 @@ h5, h6          { font-weight: bolder }
     line-height: 22px;
     padding: 60px 30px;
     background: #fff;
-    width:75%;
+    width:70%;
     float:left;
 
     -webkit-box-sizing: border-box;
@@ -475,12 +475,13 @@ h5, h6          { font-weight: bolder }
     line-height: 22px;
     background: #fff;
     float:left;
-    width:20%;
-    padding: 60px 30px;
+    width:30%;
+    padding: 60px 10px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
+    
 }
 
 
@@ -548,6 +549,8 @@ h5, h6          { font-weight: bolder }
     bottom: -3px;
     left: 50%;
     margin-left: -3px;
+
+   
 }
 
 
@@ -647,3 +650,6 @@ h5, h6          { font-weight: bolder }
     padding:10px;
     text-align: center;
 }
+
+
+ /*custome*/
