@@ -1,36 +1,58 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import HomeViewHeader from './viewHeader';
+
 /**
- *class View
+ *className Home
  */
 export default class HomeView extends React.Component {
-  componentWillMount() {
-    console.log('willMount', this.props);
+
+  /**
+   * create url
+   */
+  createUrl(item) {
+    const ti = this.props.config(item.titile).replace(/\s/g, '-');
+    return '/post/' + ti + '/' + item._id;
   }
-  componentDidMount() {
-    console.log('didMount', this.props.users);
-  }
-  render() {
-    const { users } = this.props.users;
-    console.log('view render', users);
+  /**
+   * render to work Component
+   * @param item
+   */
+  renderWorkComponent(item) {
+    const url = this.createUrl(item);
     return (
-      <ul>
-        {users.map(user =>
-          <li key={user._id}>
-            <p>{user._id}</p>
-            <p>{user.uname}</p>
-            <p>{user.pcode}</p>
-          </li>
-        )}
-      </ul>
+      <div className="work">
+        <a href="javascript:;">
+          <img src={item.banner[0]} className="media" alt="" />
+          <Link to={url}>
+            <div className="caption" id={item._id}>
+              <div className="work_title">
+                <h1>{item.titile}</h1>
+                <h3>{item.author}</h3>
+                <p className="beginStory">{item.begin}</p>
+              </div>
+              <div className="inforStory">
+                <p className="dateCreate">{item.dateCreate}</p>
+                <p>View: {item.views} <span>Share: {item.shares}</span></p>
+              </div>
+            </div>
+          </Link>
+          <div className="shower"></div>
+        </a>
+      </div>
+    );
+  }
+  /**
+   * render view
+   */
+  render() {
+    return (
+      <section className="main clearfix">
+        <HomeViewHeader />
+        {this.props.arrayPost.map(val => {
+          return (this.renderWorkComponent(val));
+        })}
+      </section>
     );
   }
 }
-//  <ul>
-//         {users.map(user =>
-//           <li key={user.id}>
-//             <p>{user.id}</p>
-//             <p>{user.uname}</p>
-//             <p>{user.pword}</p>
-//           </li>
-//         )}
-//       </ul>
