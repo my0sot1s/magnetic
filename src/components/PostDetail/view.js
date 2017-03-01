@@ -87,7 +87,7 @@ export default class PostDetailView extends React.Component {
       return (
         d.map(v => (
           <li>
-            <Link to={'/post/' + v.url + '/' + v.id}>
+            <Link to={'/post/'.concat(v.url, '/', v.id)}>
               <img src={v.icon} tag={v.title} height='32' width='32' />
               {v.title}</Link>
           </li>
@@ -119,34 +119,16 @@ export default class PostDetailView extends React.Component {
    *render story content
    */
   renderContent(story, des) {
-    const checkData = d => {
-      if (d !== undefined) {
-        return (
-          d.map(line =>
-            <p>{line}</p>
-          )
-        );
-      }
-      return '';
-    };
-    const checkBanner = b => {
-      if (b) {
-        return (
-          b[0]
-        );
-      }
-      return '';
-    };
     return (
       <div>
 
         <h2>Bài học</h2>
         <p>{des.begin}</p>
 
-        <img src={checkBanner(story.banner)} className="media" alt="d" />
+        <img src={story.banner} className="media" alt="d" />
 
         <h2>Nội dung</h2>
-        {checkData(story.content)}
+        {story.content}
       </div>
     );
   }

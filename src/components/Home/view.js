@@ -12,7 +12,7 @@ export default class HomeView extends React.Component {
    */
   createUrl(item) {
     const ti = this.props.config(item.titile).replace(/\s/g, '-');
-    return '/post/' + ti + '/' + item._id;
+    return '/post/'.concat(ti, '/', item._id);
   }
   /**
    * render to work Component

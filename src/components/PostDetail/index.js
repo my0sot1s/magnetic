@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import View from './view';
-import Reducer from './../../reducers/postDetail';
+import Reducer, { PostDetailType } from './../../reducers/postDetail';
 import { dbListPosts } from './../../reducers/listPosts';
 import config from './../../constaints';
 
@@ -16,6 +16,7 @@ class PostDetail extends React.Component {
     this.state = {
       fetching: false,
       id: 5,
+      list: {},
     };
     this.id = Number(this.props.params.id);
     this.listPosts = dbListPosts[this.id];
@@ -29,6 +30,21 @@ class PostDetail extends React.Component {
     postDetailRequest(this.state.id, this.id);
   }
   /**
+       * Receiver new Data
+       * @param {Props} nextProps instead of current props
+       */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.postDetail.type === PostDetailType.POST_DETAIL_REQUEST) {
+      this.setState({ fetching: true });
+    }
+    else if (nextProps.postDetail.type === PostDetailType.POST_DETAIL_SUCCESS) {
+      this.setState({
+        list: nextProps.postDetail.postDetail,
+        fetching: false,
+      });
+    }
+  }
+  /**
    * create recommend random
    */
   createRecommendPost(min, max) {
@@ -38,9 +54,9 @@ class PostDetail extends React.Component {
    *renderView
    */
   render() {
-    const url = config.domain + '/post/'
-      + config.toText(this.listPosts.titile).replace(/\s/g, '-')
-      + '/' + this.id;
+    const url = config.domain.concat('/post/',
+      config.toText(this.listPosts.titile).replace(/\s/g, '-'),
+      '/', this.id);
     var arrRecommend = [];
     for (var i = 0; i < config.postRecommend; i++) {
       var detail = {};
@@ -50,10 +66,9 @@ class PostDetail extends React.Component {
       detail.icon = dbListPosts[detail.id].banner[0];
       arrRecommend.push(detail);
     }
-    console.log(arrRecommend);
     return (
       <View
-        postDetail={this.props.postDetail}
+        postDetail={this.state.list}
         listPosts={this.listPosts}
         url={url}
         recommendPost={arrRecommend}
@@ -61,16 +76,16 @@ class PostDetail extends React.Component {
     );
   }
 }
-const mapStateToProps = state => (
-  {
-    postDetail: state.postDetailReducer.postDetail,
-  }
+export const mapStateToProps = state => ({
+  postDetail: state.postDetailReducer,
+}
 );
-const mapDispathToProps = dispath => ({
-  postDetailRequest: (id, postId) => {
-    dispath(Reducer.postDetailRequest(id, postId));
-  },
+export const mapDispathToProps = dispath => ({
+  postDetailRequest: dispathFn.bind(this, dispath),
 });
+export const dispathFn = (dispath, id, postId) => {
+  dispath(Reducer.postDetailRequest(id, postId));
+};
 export default connect(
   mapStateToProps,
   mapDispathToProps
