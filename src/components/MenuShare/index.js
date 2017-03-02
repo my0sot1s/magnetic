@@ -13,13 +13,13 @@ export default class MenuShare extends Component {
     return (
       <ul className="social clearfix">
         <li>
-          <a href="#" className="fb" data-title="Facebook"></a>
+          <a href="http://fb.com/0.anhsang.0" className="fb" data-title="Facebook" target="_blank"></a>
         </li>
         <li>
           <a href="#" className="google" data-title="Google +"></a>
         </li>
         <li>
-          <a href="#" className="twitter" data-title="Twitter"></a>
+          <a href="https://twitter.com/my0sot1ss" className="twitter" data-title="Twitter" target="_blank"></a>
         </li>
         <li>
           <a href="#" className="rss" data-title="RSS"></a>

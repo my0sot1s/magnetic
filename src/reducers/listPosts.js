@@ -1,6 +1,6 @@
 import { createActions, createReducer } from 'reduxsauce';
 import immutable from 'seamless-immutable';
-export var dbListPosts = {};
+import db from './storages';
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -12,10 +12,10 @@ const {
   Types,
   Creators,
 } = createActions({
-  listPostsRequest: ['id'],
-  listPostsSuccess: ['listPosts'],
-  listPostsFailure: ['error'],
-});
+    listPostsRequest: ['id'],
+    listPostsSuccess: ['listPosts'],
+    listPostsFailure: ['error'],
+  });
 
 export const ListPostsType = Types;
 export default Creators;
@@ -33,7 +33,7 @@ export const request = (state, { type }) => state.merge({
 });
 
 export const success = (state, { listPosts, type }) => {
-  dbListPosts = listPosts;
+  db.dbListPosts = listPosts;
   return state.merge({
     fetching: false,
     listPosts,

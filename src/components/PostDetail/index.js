@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import View from './view';
 import Reducer, { PostDetailType } from './../../reducers/postDetail';
-import { dbListPosts } from './../../reducers/listPosts';
+import db from './../../reducers/storages';
 import config from './../../constaints';
 
 /**
@@ -19,8 +19,8 @@ class PostDetail extends React.Component {
       list: {},
     };
     this.id = Number(this.props.params.id);
-    this.listPosts = dbListPosts[this.id];
-    this.len = Object.keys(dbListPosts).length;
+    this.listPosts = db.dbListPosts[this.id];
+    this.len = Object.keys(db.dbListPosts).length;
   }
   /**
    * fetch data
@@ -36,8 +36,7 @@ class PostDetail extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.postDetail.type === PostDetailType.POST_DETAIL_REQUEST) {
       this.setState({ fetching: true });
-    }
-    else if (nextProps.postDetail.type === PostDetailType.POST_DETAIL_SUCCESS) {
+    } else if (nextProps.postDetail.type === PostDetailType.POST_DETAIL_SUCCESS) {
       this.setState({
         list: nextProps.postDetail.postDetail,
         fetching: false,
@@ -61,9 +60,9 @@ class PostDetail extends React.Component {
     for (var i = 0; i < config.postRecommend; i++) {
       var detail = {};
       detail.id = this.createRecommendPost(1, this.len);
-      detail.title = dbListPosts[detail.id].titile;
+      detail.title = db.dbListPosts[detail.id].titile;
       detail.url = config.toText(detail.title).replace(/\s/g, '-');
-      detail.icon = dbListPosts[detail.id].banner[0];
+      detail.icon = db.dbListPosts[detail.id].banner[0];
       arrRecommend.push(detail);
     }
     return (
